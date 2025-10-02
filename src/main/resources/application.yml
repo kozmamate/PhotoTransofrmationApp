@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: photo-transformation-app
+  
+  datasource:
+    url: jdbc:h2:mem:phototransformationdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+    
+  # Force H2 to use memory database
+  sql:
+    init:
+      platform: h2 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+        trace: false
+  
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      enabled: true
+
+photo:
+  resize:
+    max-width: 1920
+    max-height: 1080
+  upload:
+    max-size: 5000
+    allowed-formats: png,jpg,jpeg
+  storage:
+    path: ./storage
+  imagemagick:
+    path: "C:/Program Files/ImageMagick-7.1.1-Q16-HDRI/magick.exe"  # Adjust this path based on your ImageMagick installation
+
+logging:
+  level:
+    com.phototransformation: DEBUG
+
+# Swagger/OpenAPI configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
