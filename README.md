@@ -116,19 +116,19 @@ files: [fájlok]
 }
 ```
 
-### Összes kép metaadatainak lekérdezése
+### Képel feltöltésére szolgáló végpont
 ```http
-GET /api/files
+GET /api/files/download
 ```
 
-### Kép metaadatainak lekérdezése ID alapján
+### Kép letöltése név alapján
 ```http
-GET /api/files/{id}/metadata
+GET /api/files/download/{fileName}
 ```
 
-### Kép letöltése
+### Összes kép letöltése
 ```http
-GET /api/files/{id}/download
+GET /api/files/download-all
 ```
 
 ## Biztonsági funkciók
